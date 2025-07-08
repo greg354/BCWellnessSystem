@@ -13,10 +13,9 @@
       text-align: center;
       margin: 0;
     }
-    .top-bar{
+    .bar{
       width: 100vw;
       background-color: #3C6E71;
-      padding: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       color: #F1F6F9;
       text-align: left;
@@ -24,11 +23,10 @@
       font-family: Raleway;
       font-weight: bold;
       padding: 20px 0 20px 40px;
-      margin: 0;
       box-sizing: border-box;
  
     }
-    .main-block {
+    .block {
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -41,8 +39,8 @@
     margin-right: auto;
     }
 
-    .title-section,
-    .button-section {
+    .title-Section,
+    .button-Section {
     padding: 45px;
     width: 400px;
     height: 350px;
@@ -54,14 +52,14 @@
     #head-smal{
        font-size: 45px; 
     }
-    .title-section{
+    .title-Section{
        color: #2C3E50;
         font-size: 40px;
     }
-    .title-section h1{
+    .tSection h1{
         margin: 0;
     }
-    .button-section {
+    .bSection {
       background-color: #77D9C2;
   
     }
@@ -95,14 +93,14 @@
         <title>Home</title>
     </head>
     <body>
-       <div class="top-bar">BCWellness</div>
+       <div class="bar">BCWellness</div>
 
-    <div class="main-block">
-        <div class="title-section">
+    <div class="block">
+        <div class="title-Section">
             <h1 id="head-smal">Welcome to</h1> 
             <h1>BCWellness</h1>
         </div>
-        <div class="button-section">
+        <div class="button-Section">
             <a class="nav-button" href="login.jsp">Login</a>
             <a class="nav-button" href="register.jsp">Register</a>
         </div>
