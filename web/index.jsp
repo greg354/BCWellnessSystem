@@ -33,7 +33,7 @@
     margin-top: 7.5%;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    overflow: hidden; /* Prevent any visual overlap */
+    overflow: hidden; 
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
@@ -56,10 +56,10 @@
        color: #2C3E50;
         font-size: 40px;
     }
-    .tSection h1{
+    .title-Section h1{
         margin: 0;
     }
-    .bSection {
+    .button-Section {
       background-color: #77D9C2;
   
     }
