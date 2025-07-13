@@ -13,47 +13,30 @@
 
   <-- Now We'll be getting into the SQL -->
   1. Start by right-clicking the "BCWellnessDB" -> Click "Query Tool"
+  Creating a SCHEMA First, then creating the tables, within the schema
 */
-CREATE TABLE IF NOT EXISTS public."tblUsers"
-(
-    "StudentID" character varying(6) COLLATE pg_catalog."default" NOT NULL,
-    "Name" character varying(15) COLLATE pg_catalog."default" NOT NULL,
-    "Surname" character varying(25) COLLATE pg_catalog."default" NOT NULL,
-    "Email" character varying(200) COLLATE pg_catalog."default" NOT NULL,
-    "Phone" character varying(10) COLLATE pg_catalog."default" NOT NULL,
-    "Password" character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT "tblLogin_pkey" PRIMARY KEY ("StudentID")
-)
+CREATE SCHEMA student_services; 
 
-TABLESPACE pg_default;
+CREATE TABLE student_services.tblUsers (
+    StudentID VARCHAR(10) PRIMARY KEY,
+    Name VARCHAR(50),
+    Surname VARCHAR(50),
+    Email VARCHAR(100),
+    Phone VARCHAR(20),
+    Password VARCHAR(100)
+);
 
-ALTER TABLE IF EXISTS public."tblUsers"
-    OWNER to postgres;
-
-CREATE TABLE IF NOT EXISTS public."Services"
-(
-    "ID" integer NOT NULL DEFAULT nextval('"Services_ID_seq"'::regclass),
-    "Service" character varying(15) COLLATE pg_catalog."default" NOT NULL,
-    "Description" character varying(100) COLLATE pg_catalog."default" NOT NULL,
-    "StudentID" character varying(6) COLLATE pg_catalog."default" NOT NULL,
-    "Date" timestamp without time zone,
-    CONSTRAINT "Services_pkey" PRIMARY KEY ("ID"),
-    CONSTRAINT "Services_fkey" FOREIGN KEY ("StudentID")
-        REFERENCES public."tblUsers" ("StudentID") MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-        NOT VALID
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public."Services"
-    OWNER to postgres;
-
+CREATE TABLE student_services.tblRequests (
+    RequestID SERIAL PRIMARY KEY,
+    Service VARCHAR(50),
+    Description VARCHAR(100),
+    StudentID VARCHAR(10) REFERENCES student_services.tblUsers(StudentID),
+    RequestDate TIMESTAMP WITHOUT TIME ZONE
+);
 /* 
-  <-- Awesome! Now put some random, binding data into the tables. -->
+  <-- Awesome! Now put some random, binding demo data into the tables. -->
 */
-INSERT INTO tblUsers (StudentID, Name, Surname, Email, Phone, Password)
+INSERT INTO student_services.tblUsers (StudentID, Name, Surname, Email, Phone, Password)
 VALUES
 ('600166','Iwan','Rademan','iwanrademan@gmail.com','0720836159','pass'),
 ('330167','Liam','Van Dyk','liam.vandyk@gmail.com','0721234561','pass'),
@@ -77,7 +60,7 @@ VALUES
 ('820185','Benjamin','Olivier','benjamin.olivier@yahoo.com','0701234579','pass'
   );
 
-INSERT INTO tblRequests (Service, Description, StudentID, RequestDate)
+INSERT INTO student_services.tblRequests (Service, Description, StudentID, RequestDate)
 VALUES
 ('Appointment', 'Need help choosing modules', '600166', '2025-07-09 09:00:00'),
 ('Counsellors', 'Struggling with anxiety lately', '330167', '2025-07-08 14:15:00'),
