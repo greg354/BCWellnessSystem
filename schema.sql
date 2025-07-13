@@ -19,19 +19,19 @@ CREATE SCHEMA student_services;
 
 CREATE TABLE student_services.tblUsers (
     StudentID VARCHAR(6) PRIMARY KEY,
-    Name VARCHAR(50),
-    Surname VARCHAR(50),
-    Email VARCHAR(100),
-    Phone VARCHAR(10),
-    Password VARCHAR(100)
+    Name VARCHAR(50) NOT NULL,
+    Surname VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Phone VARCHAR(10) NOT NULL,
+    Password VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE student_services.tblRequests (
     RequestID SERIAL PRIMARY KEY,
-    Service VARCHAR(50),
-    Description VARCHAR(100),
-    StudentID VARCHAR(6) REFERENCES student_services.tblUsers(StudentID),
-    RequestDate TIMESTAMP WITHOUT TIME ZONE
+    Service VARCHAR(50) NOT NULL,
+    Description VARCHAR(100) NOT NULL,
+    StudentID VARCHAR(6) NOT NULL REFERENCES student_services.tblUsers(StudentID),
+    RequestDate TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 /* 
   <-- Awesome! Now put some random, binding demo data into the tables. -->
