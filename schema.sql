@@ -18,11 +18,11 @@
 CREATE SCHEMA student_services; 
 
 CREATE TABLE student_services.tblUsers (
-    StudentID VARCHAR(10) PRIMARY KEY,
+    StudentID VARCHAR(6) PRIMARY KEY,
     Name VARCHAR(50),
     Surname VARCHAR(50),
     Email VARCHAR(100),
-    Phone VARCHAR(20),
+    Phone VARCHAR(10),
     Password VARCHAR(100)
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE student_services.tblRequests (
     RequestID SERIAL PRIMARY KEY,
     Service VARCHAR(50),
     Description VARCHAR(100),
-    StudentID VARCHAR(10) REFERENCES student_services.tblUsers(StudentID),
+    StudentID VARCHAR(6) REFERENCES student_services.tblUsers(StudentID),
     RequestDate TIMESTAMP WITHOUT TIME ZONE
 );
 /* 
