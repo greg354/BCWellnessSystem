@@ -119,6 +119,13 @@
         <button class="submit-button" type="submit" href="dashboard.jsp">Log In</button>
       </form>
     </div>
+      <div>
+                      <% if (request.getParameter("error") != null) { %>
+            <div class="alert alert-danger"><%= request.getParameter("error") %></div>
+            <% } %>
+            
+            
+      </div>
   </div>
 
     </body>

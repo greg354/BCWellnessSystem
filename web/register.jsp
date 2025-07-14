@@ -120,7 +120,7 @@
         <input type="email" name="email" placeholder="Email" required />
         <input type="text" name="phone" placeholder="Phone Number" required />
         <input type="password" name="password" placeholder="Password" required />
-        <button class="submit-button" type="submit" href="login.jsp">Register</button>
+        <button class="submit-button" type="submit" >Register</button>
       </form>
     </div>
   </div>
