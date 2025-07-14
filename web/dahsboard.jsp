@@ -5,6 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if(session.getAttribute("Student") == null){
+    response.sendRedirect("dahsboard.jsp");
+    return;
+    }
+%>
+
 <!DOCTYPE html>
 <style>
     body {
@@ -69,7 +76,7 @@
          <div class="top-bar">BCWellness</div>
 
         <div class="main-block">
-         <h1>Welcome, [studentNumber]!</h1>
+            <h1>Welcome, <%= session.getAttribute("Name") %>!</h1>
         <form action="logout.jsp" method="post">
             <button type="submit" class="logout-button">Log Out</button>
         </form>

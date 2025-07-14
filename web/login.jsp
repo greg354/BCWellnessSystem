@@ -5,6 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if(session.getAttribute("Student") != null){
+    response.sendRedirect("dahsboard.jsp");
+    return;
+    }
+%>
 <!DOCTYPE html>
 <style>
     body {

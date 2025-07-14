@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +29,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        var studentNum = request.getParameter("studentNumber");
-       var password = request.getParameter("passowrd");
+       var password = request.getParameter("password");
        
        try{
           var student = this.conn.getSTudent(studentNum);
@@ -41,11 +42,18 @@ public class LoginServlet extends HttpServlet {
              response.sendRedirect("login.jsp?error=Passwod is inncorrect, please try again  ");
             return; 
           }
-           response.sendRedirect("dahsboard.jsp");
+           HttpSession sesion = request.getSession();
+           sesion.setAttribute("Student", student);
+           sesion.setAttribute("Name", student.name);
+           sesion.setMaxInactiveInterval(30*60);
+           String uri = response.encodeRedirectURL("dahsboard.jsp");
+           response.sendRedirect(uri);
        }catch(ClassNotFoundException exception){
            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, exception);
            System.out.println("Womp Womp");
        }
+       
+       
        
     }
 
